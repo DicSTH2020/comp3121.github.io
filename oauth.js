@@ -71,7 +71,6 @@
    Another option is to call exports.correctTimestamp with a Unix timestamp.
  */
 
-<script src="sha1.js"></script>
 
 //var sha = require('sha1.js');
 var exports; if (exports == null) exports = {};
