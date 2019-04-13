@@ -1,5 +1,5 @@
 <head>
-<title> 長輩圖 twitter 0101 </title>
+<title> 長輩圖 twitter 0119 </title>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -72,17 +72,20 @@ $.ajax({
 //   headers: {"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U"},
    success: function(response) { 
         console.log("Got Res!"); 
-    console.log(response); 
+    //console.log(response); 
  //console.log(JSON.stringify(response));
     
-var statuses = response.statuses;
+// var statuses = response.statuses;
     
-    if(statuses){
-     statuses.forEach(function(status) {
-           console.log(status);
+//     if(statuses){
+//      statuses.forEach(function(status) {
+//            console.log(status);
       
-     })
-	}
+//      })
+// 	}
+	   
+	   var json = $.parseJSON(response);
+	   console.log(json);
                       },
    error:function(exception){
        alert("Exeption:"+exception);
