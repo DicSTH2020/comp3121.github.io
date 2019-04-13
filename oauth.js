@@ -70,7 +70,10 @@
 
    Another option is to call exports.correctTimestamp with a Unix timestamp.
  */
-var sha = require('sha1.js');
+
+<script src="sha1.js"></script>
+
+//var sha = require('sha1.js');
 var exports; if (exports == null) exports = {};
 
 exports.setProperties = function setProperties(into, from) {
