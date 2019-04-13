@@ -28,20 +28,20 @@ var urlLink = 'https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.js
 //     "tokenSecret": tokenSecret
 // };
 
-var params = {
-    "status": twitterStatus,
-    "oauth_consumer_key": oauth_consumer_key,
-    "oauth_nonce": nonce,
-    "oauth_signature_method": "HMAC-SHA1",
-    "oauth_timestamp": timestamp,
-    "oauth_token": oauth_token,
-    "oauth_version": "1.0"
-};
-var message = {
-    "method": "POST",
-    "action": urlLink,
-    "parameters": params
-};
+// var params = {
+//     "status": twitterStatus,
+//     "oauth_consumer_key": oauth_consumer_key,
+//     "oauth_nonce": nonce,
+//     "oauth_signature_method": "HMAC-SHA1",
+//     "oauth_timestamp": timestamp,
+//     "oauth_token": oauth_token,
+//     "oauth_version": "1.0"
+// };
+// var message = {
+//     "method": "POST",
+//     "action": urlLink,
+//     "parameters": params
+// };
 
 //lets create signature
 // oauth.SignatureMethod.sign(message, accessor);
