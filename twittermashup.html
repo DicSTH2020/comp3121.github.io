@@ -1,5 +1,5 @@
 <head>
-<title> 長輩圖 twitter 2007 </title>
+<title> 長輩圖 twitter 2009 </title>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -69,8 +69,8 @@ $.ajax({
 //         xhr.setRequestHeader('Authorization','Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U');  
 //    },
  headers: {"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U"},
-   success: function(data) { 
-        console.log("Got Res!"+ data.result.items[0].id); 
+   success: function(response) { 
+        console.log("Got Res!"+ response.result.items[0].id); 
    },
    error:function(exception){
        alert("Exeption:"+exception);
