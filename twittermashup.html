@@ -10,14 +10,14 @@
 <script>
 //var oauth = require('oauth.js');
 
-//var urlLink = 'https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.json?query=APPLE';
+var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.json?query=APPLE';
  
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const urlLink = "https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.json?query=APPLE"; // site that doesn’t send Access-Control-*
-fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-.then(response => response.text())
-.then(contents => console.log(contents))
-.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+// const proxyurl = "https://cors-anywhere.herokuapp.com/";
+// const url = "https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.json?query=APPLE"; // site that doesn’t send Access-Control-*
+// fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+// .then(response => response.text())
+// .then(contents => console.log(contents))
+// .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
 // var twitterStatus = "Sample tweet";
 
