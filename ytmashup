@@ -1,0 +1,151 @@
+<head>
+
+<title> 長輩圖 Mashup </title>
+  
+
+  
+   
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134268415-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-134268415-1');
+</script>
+
+<script>
+  /**
+   * Sample JavaScript code for youtube.channels.list
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+   function loadClientAndSearch() {
+    gapi.client.setApiKey("AIzaSyCLNYLDYcIO7PtEPqLpbIzKYOmRB4lDObk");
+    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+        .then(function() { console.log("GAPI client loaded for API"); searchList(); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+
+  gapi.load("client", function() {
+        // gapi.auth2.init({client_id: "669658571519-k0kf7okgs8mllgknbhkiehrccvc5e8au.apps.googleusercontent.com"});
+    loadClientAndSearch();
+  });
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    gapi.client.youtube.channels.list({
+          'part': 'snippet, contentDetails,statistics',
+          'forUsername': 'GoogleDevelopers'
+      }).then(function(response){
+        console.log(response);
+        var channel = response.result.items[0];
+        $("#result").val('This channel\'s ID is ' + channel.id + '. ' +
+        'Its title is \'' + channel.snippet.title + ', ' + 'and it has ' + channel.statistics.viewCount + ' views');
+      });
+  }
+
+  function getChannel() {
+      gapi.client.youtube.channels.list({
+          'part': 'snippet, contentDetails,statistics',
+          'forUsername': 'GoogleDevelopers'
+      }).then(function(response){
+        console.log(response);
+        var channel = response.result.items[0];
+        $("#result").val('This channel\'s ID is ' + channel.id + '. ' +
+        'Its title is \'' + channel.snippet.title + ', ' + 'and it has ' + channel.statistics.viewCount + ' views');
+      });
+  }
+
+  function searchList() {
+    gapi.client.youtube.search.list({
+      q: "長輩圖",
+      part: "snippet",
+      maxResults: "5",
+      type: "video",
+      videoEmbeddable: "true",
+      order: "date"
+    }).then(function(response) {
+      // Handle the results here (response.result has the parsed body).
+      console.log("Response", response);
+
+      var items = response.result.items;
+
+      if (items) {  
+        items.forEach(function(searchResult) {
+          var videoId = searchResult.id.videoId;
+          var snippet = searchResult.snippet;
+          var title = snippet.title;
+          var description = snippet.description;
+          var channelTitle = snippet.channelTitle;
+          var channelId = snippet.channelId;
+          var publishedAt = snippet.publishedAt;
+          var publishDate = new Date(publishedAt);
+
+          appendVideo("https://www.youtube.com/embed/" + videoId, title, description, channelTitle, channelId, publishDate);
+        });       
+      }
+    },
+    function(err) { console.error("Execute error", err); });
+  }
+
+  function appendVideo(src, title, description, channelTitle, channelId, publishDate) {
+    $("#videoContainer").append(
+      '<div class="card" style="width: 560;">' + 
+      '<iframe ' + 
+      'id="videoEmbed"' + 
+      'width="560" ' + 
+      'src="' + src + '"' +
+      'height="315" 	' + 
+      'frameborder="0"' + 
+      'allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ' + 
+      'allowfullscreen>' + 
+      '</iframe>' + 
+      '<div class="card-body">' + 
+      '<table>' + 
+      '<td>' + 
+      '<tr>' + 
+      '<h5 class="card-title">' + title + '</h5>' +       
+      '</td>' + 
+      '</tr>' + 
+      '<tr>' + 
+      '<td>' + 
+      '<a href="https://www.youtube.com/channel/' + channelId + '" >' + channelTitle + '</a>' + 
+      '<h6 class="card-text">Published on: ' + publishDate.toDateString() + '</h5>' + 
+      '<hr class="my-4">' +
+      '<p class="card-text">' + description + '</p>' + 
+      '</td>' + 
+      '</tr>' + 
+      // '<a href="#" class="btn btn-primary">Go somewhere</a>' + 
+      '</table>' +
+      '</div>' + 
+      '</div>'
+    );  
+
+  }
+
+
+  // $(document).ready(function(){
+  //   searchList();
+  // });
+  
+</script>
+</head>
+<!-- <button onclick="authenticate().then(loadClient)">authorize and load</button>
+<button onclick="execute()">execute</button>
+<button onclick="init()">execute</button>
+<button onclick="init().then(searchList)">init and search</button>
+<button onclick="searchList()">search</button>
+<input type="text" id="result"></input> -->
+
+
+<div id="videoContainer">
+
+
+</div>
