@@ -1,75 +1,18 @@
 <head>
-<title> 長輩圖 twitter 0205 </title>
+<title> 長輩圖 twitter 0205 </title> 
  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-<script src="oauth.js"></script>
- <script src="sha1.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
 <script>
-//var oauth = require('oauth.js');
-
 var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?count=20&q="長輩圖"';
-//  var urlLink = 'https://api.twitter.com/1.1/search/tweets.json?query=APPLE';
-
-// const proxyurl = "https://cors-anywhere.herokuapp.com/";
-// const url = "https://api.twitter.com/1.1/tweets/search/fullarchive/COMP3121.json?query=APPLE"; // site that doesn’t send Access-Control-*
-// fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-// .then(response => response.text())
-// .then(contents => console.log(contents))
-// .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-
-// var twitterStatus = "Sample tweet";
-
-// var oauth_consumer_key = "d6T0PcnqxxxxxxxxxxUB7Jok2f";
-// var consumerSecret = "NFbG1H7CGRxukJTPxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxze02qH8";
-
-// var oauth_token = "306673734-RQanTkxxxxxxxxxxxxxxxxxxeH4NuqQ8Z";
-// var tokenSecret = "YnF5vpjclMMVWhuxxxxxxxxxxxxxxxl3xejqAu";
-
-//var nonce = nonce(32);
-// var ts = Math.floor(new Date().getTime() / 1000);
-// var timestamp = ts.toString();
-
-// var accessor = {
-//     "consumerSecret": consumerSecret,
-//     "tokenSecret": tokenSecret
-// };
-
-// var params = {
-//     "status": twitterStatus,
-//     "oauth_consumer_key": oauth_consumer_key,
-//     "oauth_nonce": nonce,
-//     "oauth_signature_method": "HMAC-SHA1",
-//     "oauth_timestamp": timestamp,
-//     "oauth_token": oauth_token,
-//     "oauth_version": "1.0"
-// };
-// var message = {
-//     "method": "POST",
-//     "action": urlLink,
-//     "parameters": params
-// };
-
-//lets create signature
-// oauth.SignatureMethod.sign(message, accessor);
-// var normPar = oauth.SignatureMethod.normalizeParameters(message.parameters);
-// var baseString = oauth.SignatureMethod.getBaseString(message);
-// var sig = oauth.getParameter(message.parameters, "oauth_signature") + "=";
-// var encodedSig = oauth.percentEncode(sig); //finally you got oauth signature
 var token = "AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U";
 
 $.ajax({
     url: urlLink,
     type: 'GET',
-//     data: {
-//         "status": twitterStatus
-//     },
     beforeSend: function(xhr){
         xhr.setRequestHeader('Authorization','Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U');  
    },
-//   headers: {"Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U"},
 //    success: function(response) { 
 //         console.log("Got Res!"); 
 //    // console.log(response); 
@@ -87,8 +30,7 @@ $.ajax({
    error:function(exception){
        alert("Exeption:"+exception);
     }
-  }
-  
+  }  
 ).done(function(response) { 
         console.log("Got Res 2!"); 
     console.log(response); ;
@@ -96,9 +38,3 @@ $.ajax({
   
 </script>
 </head>
-
-
-<div id="videoContainer">
-
-
-</div>
