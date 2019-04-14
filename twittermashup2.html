@@ -1,0 +1,99 @@
+<head>
+<title> 長輩圖 twitter 190414.1723 </title> 
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+ 
+<script>
+var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=%23長輩圖%20OR%20%22長輩圖%22%20-from%3ATDMAtoromi&count=8';
+var token = "AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U";
+
+$.ajax({
+    url: urlLink,
+    type: 'GET',
+    beforeSend: function(xhr){
+        xhr.setRequestHeader('Authorization','Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U');  
+   },
+//    success: function(response) { 
+//         console.log("Got Res!"); 
+//    // console.log(response); 
+//  console.log(JSON.stringify(response));
+    
+// var statuses = response.statuses;    
+//     if(statuses){
+//      statuses.forEach(function(status) {
+//            console.log(status);      
+//      })
+// 	}	   
+// 	   var json = $.parseJSON(response);
+// 	   console.log(json);
+          //            },
+   error:function(exception){
+       alert("Exeption:"+exception);
+    }
+  }  
+).done(function(response) { 
+     //   console.log("Got Res from !"+ urlLink); 
+    console.log(response); ;
+   var statuses = response.statuses;
+  // console.log(statuses);
+   
+   statuses.forEach(function(status) {
+    getEmbedHtml(status.id_str);
+   });
+
+});
+
+  function getEmbedHtml(id) {
+
+    var apiUrl = 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/'+id;
+    //console.log('Call id:'+apiUrl);
+
+
+    $.ajax({
+      url: apiUrl,
+      type: 'GET',
+      dataType: 'jsonp'
+    }
+    ).done(function (response) {
+    //  console.log("Got oembed  !"+ apiUrl);
+      // console.log(response); ;
+      var html = response.html;
+    //  console.log(html);
+      $("#tweet").append(html);
+    });
+  }
+
+</script>
+
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+<!-- <blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a
+      href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a
+      href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a
+      href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a
+      href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior)
+  <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a>
+</blockquote> -->
+<!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+
+<div id="tweet"></div>
+
+</head>
