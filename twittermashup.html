@@ -4,7 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
 <script>
-var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=%23長輩圖 OR 長輩圖 -from:TDMAtoromi';
+var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=%23長輩圖%20OR%20長輩圖%20-from%3ATDMAtoromi';
 var token = "AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U";
 
 $.ajax({
@@ -32,14 +32,10 @@ $.ajax({
     }
   }  
 ).done(function(response) { 
-        console.log("Got Res 2!"); 
+        console.log("Got Res from !"+ urlLink); 
    // console.log(response); ;
    var statuses = response.statuses;
-   var statuse3 = response.statuses[3];
-   console.log(statuses);
-   console.log("Got Res 3!"); 
 
-   console.log(statuse3);
 });
   
 </script>
