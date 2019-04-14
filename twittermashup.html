@@ -37,22 +37,30 @@ $.ajax({
    var statuses = response.statuses;
    console.log(statuses);
    
+   statuses.forEach(function(status) {
+    getEmbedHtml(status.id);
+   });
 
 });
 
-$.ajax({
-    url: 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/1117216178181554178',
-    type: 'GET',
-   dataType: 'jsonp'
-  }  
-).done(function(response) { 
-        console.log("Got oembed  !"); 
-   // console.log(response); ;
-   var html = response.html;
-   console.log(html);
-   $("#tweet").append(html);
-});
-  
+  function getEmbedHtml(id) {
+    console.log('Call id:'+id);
+
+    var apiUrl = 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/'+id
+    $.ajax({
+      url: apiUrl,
+      type: 'GET',
+      dataType: 'jsonp'
+    }
+    ).done(function (response) {
+      console.log("Got oembed  !"+ apiUrl);
+      // console.log(response); ;
+      var html = response.html;
+      console.log(html);
+      $("#tweet").append(html);
+    });
+  }
+
 </script>
 
 
