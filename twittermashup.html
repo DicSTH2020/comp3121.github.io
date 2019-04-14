@@ -44,9 +44,11 @@ $.ajax({
 });
 
   function getEmbedHtml(id) {
-    console.log('Call id:'+id);
 
-    var apiUrl = 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/'+id
+    var apiUrl = 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/'+id;
+    console.log('Call id:'+apiUrl);
+
+
     $.ajax({
       url: apiUrl,
       type: 'GET',
