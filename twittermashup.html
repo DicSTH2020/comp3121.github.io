@@ -1,5 +1,5 @@
 <head>
-<title> 長輩圖 twitter 1353 </title> 
+<title> 長輩圖 twitter 1356 </title> 
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
@@ -40,23 +40,17 @@ $.ajax({
 
 });
 
-// $.ajax({
-//     url: 'https://publish.twitter.com/oembed',
-//     type: 'GET',
-//     crossDomain: true,
-//    dataType: 'jsonp',
-//    error:function(exception){
-//        alert("Exeption:"+exception);
-//     }
-//   }  
-// ).done(function(response) { 
-//         console.log("Got oembed from !"+ urlLink); 
-//    // console.log(response); ;
-//    var html = response.html;
-//    console.log(html);
-   
-
-// });
+$.ajax({
+    url: 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/1117216178181554178',
+    type: 'GET',
+   dataType: 'jsonp'
+  }  
+).done(function(response) { 
+        console.log("Got oembed from !"+ url); 
+   // console.log(response); ;
+   var html = response.html;
+   console.log(html);
+});
   
 </script>
 
