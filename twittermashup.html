@@ -43,9 +43,8 @@ $.ajax({
 $.ajax({
     url: 'https://publish.twitter.com/oembed',
     type: 'GET',
-    headers: {
-        'Access-Control-Allow-Origin': 'http://sotikhang.github.io'
-    },
+    crossDomain: true,
+   dataType: 'jsonp',
    error:function(exception){
        alert("Exeption:"+exception);
     }
