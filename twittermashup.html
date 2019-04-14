@@ -1,10 +1,10 @@
 <head>
-<title> 長輩圖 twitter 190414.1653 </title> 
+<title> 長輩圖 twitter 190414.1708 </title> 
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
 <script>
-var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=%23長輩圖%20OR%20%22長輩圖%22%20-from%3ATDMAtoromi';
+var urlLink = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=%23長輩圖%20OR%20%22長輩圖%22%20-from%3ATDMAtoromi%26count=8';
 var token = "AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U";
 
 $.ajax({
@@ -32,10 +32,10 @@ $.ajax({
     }
   }  
 ).done(function(response) { 
-        console.log("Got Res from !"+ urlLink); 
+     //   console.log("Got Res from !"+ urlLink); 
    // console.log(response); ;
    var statuses = response.statuses;
-   console.log(statuses);
+  // console.log(statuses);
    
    statuses.forEach(function(status) {
     getEmbedHtml(status.id_str);
@@ -46,7 +46,7 @@ $.ajax({
   function getEmbedHtml(id) {
 
     var apiUrl = 'https://publish.twitter.com/oembed?url=https://twitter.com/Interior/status/'+id;
-    console.log('Call id:'+apiUrl);
+    //console.log('Call id:'+apiUrl);
 
 
     $.ajax({
@@ -55,10 +55,10 @@ $.ajax({
       dataType: 'jsonp'
     }
     ).done(function (response) {
-      console.log("Got oembed  !"+ apiUrl);
+    //  console.log("Got oembed  !"+ apiUrl);
       // console.log(response); ;
       var html = response.html;
-      console.log(html);
+    //  console.log(html);
       $("#tweet").append(html);
     });
   }
