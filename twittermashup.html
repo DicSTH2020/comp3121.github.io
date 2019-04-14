@@ -41,34 +41,17 @@ $.ajax({
 });
 
 $.ajax({
-    url: https://publish.twitter.com/oembed,
+    url: 'https://publish.twitter.com/oembed',
     type: 'GET',
-    beforeSend: function(xhr){
-        xhr.setRequestHeader('Authorization','Bearer AAAAAAAAAAAAAAAAAAAAAIMoxwAAAAAAyxBqLx6tnRTt71Wr3%2BX8eC5MSpE%3DEudMLIoZ3hVPzmtMS7arhYkdLtJmNAsO31QuieFHpWdT6ggz9U');  
-   },
-//    success: function(response) { 
-//         console.log("Got Res!"); 
-//    // console.log(response); 
-//  console.log(JSON.stringify(response));
-    
-// var statuses = response.statuses;    
-//     if(statuses){
-//      statuses.forEach(function(status) {
-//            console.log(status);      
-//      })
-// 	}	   
-// 	   var json = $.parseJSON(response);
-// 	   console.log(json);
-          //            },
    error:function(exception){
        alert("Exeption:"+exception);
     }
   }  
 ).done(function(response) { 
-        console.log("Got Res from !"+ urlLink); 
+        console.log("Got oembed from !"+ urlLink); 
    // console.log(response); ;
-   var statuses = response.statuses;
-   console.log(statuses);
+   var html = response.html;
+   console.log(html);
    
 
 });
